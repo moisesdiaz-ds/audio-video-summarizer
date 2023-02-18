@@ -1,0 +1,7 @@
+
+Resumen:
+
+1. El interlocutor llegó a la dirección indicada.
+2. Se preguntó si la empresa contaba con tecnología para saber si había llegado.
+3. Se le informó que la tecnología de la empresa no era suficiente para eso.
+4. Se le explicó que el sistema de rastreo de la empresa era el que se usaba.

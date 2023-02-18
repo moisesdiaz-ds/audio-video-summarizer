@@ -1,0 +1,101 @@
+<html>
+  <head>
+    <title>Audio/Video Summarizer</title>
+    <style>
+      /* Add your CSS styles here */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+      }
+      .container {
+        max-width: 600px;
+        margin: 60px auto;
+        background-color: white;
+        padding: 40px;
+        text-align: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        font-size: 32px;
+        margin-bottom: 40px;
+      }
+      .header {
+        margin-bottom: 40px;
+      }
+      .header h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+      }
+      .header p {
+        font-size: 18px;
+        color: gray;
+        margin-bottom: 40px;
+      }
+      .file-input {
+        display: inline-block;
+        position: relative;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        margin-top: 20px;
+        cursor: pointer;
+      }
+      .file-input input[type="file"] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        cursor: pointer;
+      }
+      .loading {
+        display: none;
+        margin-top: 20px;
+      }
+  .input-text-container {
+    margin-top: 20px;
+  }
+  .input-text {
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 1px solid gray;
+  }
+    </style>
+  </head>
+
+
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Audio/Video Summarizer</h1>
+        <p>Convert audio or video to text and summarize it with AI</p>
+      </div>
+      <form action="/upload" method="post" enctype="multipart/form-data">
+        <div class="file-input">
+          Choose File
+          <input type="file" name="file">
+        </div>
+    <div class="input-text-container">
+      <input type="text" name="apikey" placeholder="Agrega tu OPENAI api key" class="input-text">
+    </div>
+        <div class="loading">
+          Transcribing file...
+        </div>
+      </form>
+    </div>
+    <!-- Add your JavaScript code here -->
+    <script>
+      const fileInput = document.querySelector(".file-input");
+      const loadingMessage = document.querySelector(".loading");
+
+      fileInput.addEventListener("change", function() {
+        fileInput.style.display = "none";
+        loadingMessage.style.display = "block";
+        document.querySelector("form").submit();
+      });
+    </script>
+  </body>
+</html>

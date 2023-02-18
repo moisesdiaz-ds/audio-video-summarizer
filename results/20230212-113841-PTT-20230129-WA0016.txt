@@ -1,0 +1,7 @@
+
+Resumen:
+
+1. Existen tres posibles infractores que depositan basura en el medio de la escalera en lugar de los espacios asignados.
+2. Se debe enviar una comunicación a los infractores con una advertencia.
+3. La administración debe poner un cono para evitar que se parqueen vehículos ajenos.
+4. Se debe prevenir situaciones antes de que explote la bomba y la gente pierda el respeto.

@@ -1,0 +1,10 @@
+
+Resumen:
+
+Un cliente llega a la dirección indicada y pregunta si la empresa cuenta con tecnología para saber su ubicación. La empresa le informa que no, pero que cuentan con un sistema de rastreo.
+
+Puntos importantes:
+
+1. Un cliente llega a la dirección indicada.
+2. Pregunta si la empresa cuenta con tecnología para saber su ubicación.
+3. La empresa le informa que no, pero que cuentan con un sistema de rastreo.
