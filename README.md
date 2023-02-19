@@ -11,6 +11,11 @@ pip install flask
 ```
 pip install openai
 ```
+### moviepy
+```
+pip install moviepy
+```
+
 ### pytorch-gpu
 Entra aqui para poder generar el comando que te permita instalar el pytorch correspondiente a tu maquina y ambiente: 
 https://pytorch.org/get-started/locally/
