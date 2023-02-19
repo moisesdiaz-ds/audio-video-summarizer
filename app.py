@@ -2,7 +2,7 @@ from flask import Flask, request, render_template
 import os
 import subprocess
 import datetime
-from selenium import webdriver
+
 from time import sleep
 import openai
 from moviepy.video.io.VideoFileClip import VideoFileClip

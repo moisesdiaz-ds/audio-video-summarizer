@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <title>Audio Summarizer</title>
+    <style>
+      /* Add your CSS styles here */
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 60px auto;
+        background-color: white;
+        padding: 40px;
+        text-align: center;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        font-size: 32px;
+        margin-bottom: 40px;
+      }
+      .header {
+        margin-bottom: 40px;
+      }
+      .header h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+      }
+      .header p {
+        font-size: 18px;
+        color: gray;
+        margin-bottom: 40px;
+      }
+      .file-input {
+        display: inline-block;
+        position: relative;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        margin-top: 20px;
+        cursor: pointer;
+      }
+      .file-input input[type="file"] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        cursor: pointer;
+      }
+      .loading {
+        display: none;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Resumen:</h1>
+        <p>{{message_final|safe}}</p>
+      </div>
+    </div>
+
+  </body>
+</html>
