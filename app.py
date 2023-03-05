@@ -6,6 +6,7 @@ import datetime
 from time import sleep
 import openai
 from moviepy.video.io.VideoFileClip import VideoFileClip
+from pydub import AudioSegment
 
 app = Flask(__name__)
 
@@ -31,11 +32,8 @@ def upload():
 
     ## Summarize
     def summarize_text(file_path,apikey):
-        # Apply API key
-        if apikey=="":
-            apikey = open("../api-key.txt", "r").read()
+
         
-        openai.api_key = apikey
 
         file_path = file_path.replace('\\','/').replace('uploads','audio_transcription')+".txt"
 
@@ -89,18 +87,30 @@ def upload():
 
 
         
-    apikey = request.form['apikey']
+    # Apply API key
+    apikey = open("api-key.txt", "r").read()
+    
+    openai.api_key = apikey
+
     file = request.files['file']
     uploads_dir = os.path.join(app.root_path, "uploads")
     filename = datetime.datetime.now().strftime("%Y%m%d-%H%M%S-") + file.filename
     file_path = os.path.join(uploads_dir, filename)
     file.save(file_path)
 
+    if filename.endswith('ogg'):
+        ogg_file = AudioSegment.from_file(file_path, format="ogg")
+        new_file_path = "".join(file_path.split(".")[:-1])+".mp3"
+        ogg_file.export(new_file_path, format="mp3")
+        file_path = new_file_path
+        filename = file_path.split('\\')[-1]
+        print(filename)
+
     if is_video_file(file_path):
         new_file_path = "".join(file_path.split(".")[:-1])+".mp3"
         video_to_audio(file_path, new_file_path)
         file_path = new_file_path
-        filename = file_path.split('/')[-1]
+        filename = file_path.split('\\')[-1]
 
     # VERSION WHISPER GPU LOCAL
     #command = f"whisper {file_path} --task transcribe --model medium --verbose False --device cuda --output_dir audio_transcription"
@@ -111,7 +121,7 @@ def upload():
     transcript = openai.Audio.transcribe("whisper-1", audio_file)
     transcript = transcript['text']
 
-    with open("audio_transcription/"+filename+".txt", 'w') as f:
+    with open("audio_transcription/"+filename+".txt", 'w',encoding="utf-8") as f:
         f.write(transcript)
 
     try:
@@ -130,3 +140,4 @@ def upload():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
+    #app.run()

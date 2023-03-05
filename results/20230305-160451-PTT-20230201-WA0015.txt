@@ -1,0 +1,6 @@
+
+
+1. El asistente se ofrece a llevar a alguien a una dirección.
+2. Se pregunta si hay tecnología disponible para algún propósito no especificado.
+3. La respuesta es que la tecnología del asistente no es suficiente.
+4. Se explica el sistema de rastreo del asistente, pero no se especifica para qué sirve.
