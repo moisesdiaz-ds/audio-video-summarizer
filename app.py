@@ -88,7 +88,7 @@ def upload():
 
         
     # Apply API key
-    apikey = open("../api-key.txt", "r").read()
+    apikey = open("../api-key.txt", "r").read().replace("\n","")
     
     openai.api_key = apikey
 
@@ -117,7 +117,7 @@ def upload():
     #subprocess.run(command, shell=True)
 
     # VERSION WHISPER API
-    audio_file= open(file_path, "rb").replace("\n","")
+    audio_file= open(file_path, "rb")
     transcript = openai.Audio.transcribe("whisper-1", audio_file)
     transcript = transcript['text']
 
