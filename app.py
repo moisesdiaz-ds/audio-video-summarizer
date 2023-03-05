@@ -88,7 +88,7 @@ def upload():
 
         
     # Apply API key
-    apikey = open("api-key.txt", "r").read()
+    apikey = open("../api-key.txt", "r").read()
     
     openai.api_key = apikey
 
