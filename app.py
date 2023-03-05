@@ -103,21 +103,21 @@ def upload():
         new_file_path = "".join(file_path.split(".")[:-1])+".mp3"
         ogg_file.export(new_file_path, format="mp3")
         file_path = new_file_path
-        filename = file_path.split('\\')[-1]
+        filename = file_path.split('\\')[-1].split('/')[-1]
         print(filename)
 
     if is_video_file(file_path):
         new_file_path = "".join(file_path.split(".")[:-1])+".mp3"
         video_to_audio(file_path, new_file_path)
         file_path = new_file_path
-        filename = file_path.split('\\')[-1]
+        filename = file_path.split('\\')[-1].split('/')[-1]
 
     # VERSION WHISPER GPU LOCAL
     #command = f"whisper {file_path} --task transcribe --model medium --verbose False --device cuda --output_dir audio_transcription"
     #subprocess.run(command, shell=True)
 
     # VERSION WHISPER API
-    audio_file= open(file_path, "rb")
+    audio_file= open(file_path, "rb").replace("\n","")
     transcript = openai.Audio.transcribe("whisper-1", audio_file)
     transcript = transcript['text']
 
