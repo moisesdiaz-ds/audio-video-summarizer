@@ -56,11 +56,11 @@ def upload():
             prompt = f"El siguiente texto es una conversacion, porfavor resumelo y enumera los puntos mas importantes, es importante que no falte ningun tema mencionado:\n\n{t}"
 
             # Generate a summary
-            model_engine = "text-davinci-003"
-            completions = openai.Completion.create(engine=model_engine, prompt=prompt, 
-                                                   max_tokens=1024, n=1, stop=None, temperature=0.1, 
-                                                   frequency_penalty=0, presence_penalty=0)
-            message = completions.choices[0].text
+            model_engine = "gpt-3.5-turbo"
+            completions = openai.ChatCompletion.create(model=model_engine, messages=[
+                    {"role": "system", "content": "Tu eres un asistente muy servicial."},
+                    {"role": "user", "content":prompt}])
+            message =completions.choices[0].message.content
             message_list.append(message)
 
 
@@ -73,11 +73,11 @@ def upload():
             prompt = f"Porfavor combina estos {len(message_list)} resumenes en uno solo y los puntos enumerados en una sola lista, es importante que no falte ningun tema mencionado:\n\n{t2}"
 
             # Generate a summary
-            model_engine = "text-davinci-003"
-            completions = openai.Completion.create(engine=model_engine, prompt=prompt, 
-                                                   max_tokens=1024, n=1, stop=None, temperature=0.1, 
-                                                   frequency_penalty=0, presence_penalty=0)
-            message_final = completions.choices[0].text
+            model_engine = "gpt-3.5-turbo"
+            completions = openai.ChatCompletion.create(model=model_engine, messages=[
+                    {"role": "system", "content": "Tu eres un asistente muy servicial."},
+                    {"role": "user", "content":prompt}])
+            message =completions.choices[0].message.content
 
         with open(f"results/{file_path.split('.')[0].split('/')[-1]}.txt", 'w') as f:
             f.write(message_final)
@@ -100,10 +100,19 @@ def upload():
         new_file_path = "".join(file_path.split(".")[:-1])+".mp3"
         video_to_audio(file_path, new_file_path)
         file_path = new_file_path
+        filename = file_path.split('/')[-1]
 
-    command = f"whisper {file_path} --task transcribe --model medium --verbose False --device cuda --output_dir audio_transcription"
-    subprocess.run(command, shell=True)
+    # VERSION WHISPER GPU LOCAL
+    #command = f"whisper {file_path} --task transcribe --model medium --verbose False --device cuda --output_dir audio_transcription"
+    #subprocess.run(command, shell=True)
 
+    # VERSION WHISPER API
+    audio_file= open(file_path, "rb")
+    transcript = openai.Audio.transcribe("whisper-1", audio_file)
+    transcript = transcript['text']
+
+    with open("audio_transcription/"+filename+".txt", 'w') as f:
+        f.write(transcript)
 
     try:
         message_final = summarize_text(file_path,apikey)
