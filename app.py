@@ -40,7 +40,7 @@ def upload():
         # Define the text to be summarized
         text = open(f"{file_path}", "r",encoding="utf-8").read()
 
-        limit = 6500
+        limit = 50000
         loops = (len(text)//limit)+1
         message_list = []
         for n in range(loops):
