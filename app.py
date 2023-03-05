@@ -53,7 +53,7 @@ def upload():
             # Define the prompt for summarization
             #prompt = f"El siguiente texto es una conversacion, porfavor resumelo y enumera los puntos mas importantes, es importante que no falte ningun tema mencionado:\n\n{t}"
             prompt = f"""
-            Haz todo lo posible por desarrollar el siguiente texto como si fuera una minuta. Es importante ENUMERAR y DESARROLLAR a plenitud cada uno de los temas sin que falte ningun punto importante de lo tratado
+            Haz todo lo posible por desarrollar el siguiente texto como si fuera una minuta. Es importante ENUMERAR y DESARROLLAR a plenitud cada uno de los temas sin que falte ningun punto importante de lo tratado. Repito es IMPORTANTE que no falte ninguno de los temas tratados
 
             Texto:
             {t}
@@ -78,7 +78,7 @@ def upload():
             #prompt = f"Porfavor combina estos {len(message_list)} resumenes en uno solo y los puntos enumerados en una sola lista, es importante que no falte ningun tema mencionado:\n\n{t2}"
 
             prompt = f"""
-            Haz todo lo posible por desarrollar el siguiente texto como si fuera una minuta. Es importante ENUMERAR y DESARROLLAR a plenitud cada uno de los temas sin que falte ningun punto importante de lo tratado
+            Haz todo lo posible por desarrollar el siguiente texto como si fuera una minuta. Es importante ENUMERAR y DESARROLLAR a plenitud cada uno de los temas sin que falte ningun punto importante de lo tratado. Repito es IMPORTANTE que no falte ninguno de los temas tratados
 
             Texto:
             {t2}
