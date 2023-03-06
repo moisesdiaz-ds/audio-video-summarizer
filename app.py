@@ -156,11 +156,11 @@ def upload():
         filename = file_path.split('\\')[-1].split('/')[-1]
         print(filename)
 
-    if is_video_file(file_path):
-        new_file_path = "".join(file_path.split(".")[:-1])+".mp3"
-        video_to_audio(file_path, new_file_path)
-        file_path = new_file_path
-        filename = file_path.split('\\')[-1].split('/')[-1]
+    # if is_video_file(file_path):
+    #     new_file_path = "".join(file_path.split(".")[:-1])+".mp3"
+    #     video_to_audio(file_path, new_file_path)
+    #     file_path = new_file_path
+    #     filename = file_path.split('\\')[-1].split('/')[-1]
 
     # VERSION WHISPER GPU LOCAL
     #command = f"whisper {file_path} --task transcribe --model medium --verbose False --device cuda --output_dir audio_transcription"
