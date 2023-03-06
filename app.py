@@ -25,7 +25,7 @@ def upload():
         audio_path = file_path
 
         # set the length of each chunk in milliseconds (10 minutes = 600000 milliseconds)
-        chunk_length_ms = 900000
+        chunk_length_ms = 1800000
 
         # create an AudioSegment object from the mp3 file
         audio = AudioSegment.from_file(audio_path)
@@ -172,7 +172,7 @@ def upload():
     transcript_all = []
     for f in file_chunks_list:
 
-        audio_file= open(file_path, "rb")
+        audio_file= open(f, "rb")
         transcript = openai.Audio.transcribe("whisper-1", audio_file)
         transcript = transcript['text']
         transcript_all.append(transcript)
