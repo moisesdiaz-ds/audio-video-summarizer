@@ -184,7 +184,8 @@ def upload():
                     {"role": "user", "content":prompt}])
             message_final =completions.choices[0].message.content
 
-        with open(f"results/{file_path.split('.')[0]}.txt".split('\\')[-1].split('/')[-1], 'w') as f:
+        filename_res = file_path.split('.')[0].split('\\')[-1].split('/')[-1]
+        with open(f"results/{filename_res}.txt", 'w') as f:
             f.write(message_final)
 
         print(message_final)

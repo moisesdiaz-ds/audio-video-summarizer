@@ -1,0 +1,39 @@
+Minuta de Reunión [a completar]
+
+Fecha: [a completar]
+
+Hora de inicio: [a completar]
+
+Lugar: Virtual a través de Zoom
+
+Asistentes: Todos los miembros del equipo de desarrollo.
+
+Punto 1. Introducción y recordatorios
+
+Se da la bienvenida a todos los miembros del equipo de desarrollo y se recuerdan los próximos eventos importantes, como el club de lectura y la necesidad de hacer seguimiento a las reuniones con los clientes para mantener una buena relación con el equipo de ventas. También se menciona la encuesta de compromiso, que se llevará a cabo una vez al mes durante el tercer trimestre para asegurarse de que se tome en cuenta la opinión de todos.
+
+Punto 2. Actualizaciones de contratación y capacitación
+
+Se habla sobre las actualizaciones de contratación, incluyendo la adición de dos gerentes de proyecto al equipo. También se toca el tema de la importancia de los videos de capacitación de descubrimiento de clientes, que pronto serán lanzados. Se menciona que se debe cambiar el enfoque de la conversación a problemas específicos para brindar mejores soluciones.
+
+Punto 3. Lenguaje del manual
+
+Se discute la necesidad de clarificar la posición del equipo y avanzar hacia un enfoque centrado en el cliente. Se sugiere crear maquetas de baja fidelidad para problemas que no involucren componentes UX para demostrar mejor la funcionalidad de un producto.
+
+Punto 4. Empoderamiento del gerente de producto
+
+Se recomienda que los gerentes de producto tengan la libertad de usar las herramientas que se sienten más cómodos para crear demostraciones y crear la experiencia que buscan.
+
+Punto 5. Escalabilidad y rendimiento
+
+Se discute la importancia de considerar problemas de rendimiento como errores y abordar la escalabilidad y el rendimiento temprano en el proceso de desarrollo. También se destaca la importancia de considerar el rendimiento como una característica y su vínculo fundamental con la usabilidad del producto.
+
+Punto 6. Autonomía en el área de lanzamiento
+
+Se discute la necesidad de más autonomía en el área de lanzamiento y una forma de administrar la priorización de problemas y características demasiado grandes. Se menciona el enfoque de dual track agile como una solución potencial y se busca obtener comentarios sobre este enfoque.
+
+Punto 7. Experiencia de usuario
+
+Se menciona un experimento en curso centrado en mejorar la experiencia del usuario y la importancia de realizar investigaciones de usuarios, revisar el código y hacer recomendaciones para resolver problemas antes de lanzar una función o pieza de funcionalidad.
+
+Hora de finalización: [a completar]
