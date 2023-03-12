@@ -14,7 +14,7 @@ https://pytorch.org/get-started/locally/
 De no disponer de cuda, Krish Naik dispone de un buenisimo tutorial de como instalarlo
 https://www.youtube.com/watch?v=StH5YNrY0mE
 
-# Ejemplos
+# Ejemplo
 
 
 # Como utilizar la app
