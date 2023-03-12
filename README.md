@@ -15,7 +15,12 @@ De no disponer de cuda, Krish Naik dispone de un buenisimo tutorial de como inst
 https://www.youtube.com/watch?v=StH5YNrY0mE
 
 # Ejemplo
+### Video subido
+<img src="Resources/team-meetting.jpg" alt="team meeting" width="400" height="300">
+Fuente:https://www.youtube.com/watch?v=k8K6wQLxooU&t=538s
 
+### Resultado
+<img src="Resources/team-meetting-result.jpg" alt="Result team meeting" width="800" height="600">
 
 # Como utilizar la app
 Para convertir el audio a texto y resumir los resultados, sigue los siguientes pasos:
