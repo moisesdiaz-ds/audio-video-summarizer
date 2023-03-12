@@ -2,18 +2,8 @@
 Audio Summarizer es una aplicación que permite convertir audio a texto y resumir el texto utilizando técnicas de inteligencia artificial. La aplicación es útil para aquellos que necesitan procesar grandes cantidades de audio y extraer información relevante de manera rápida y eficiente.
 
 # Requisitos
-
-### flask
 ```
-pip install flask
-```
-### openai-API
-```
-pip install openai
-```
-### moviepy
-```
-pip install moviepy
+pip install -r requirements.txt
 ```
 
 ### pytorch-gpu
@@ -23,6 +13,9 @@ https://pytorch.org/get-started/locally/
 ### cuda
 De no disponer de cuda, Krish Naik dispone de un buenisimo tutorial de como instalarlo
 https://www.youtube.com/watch?v=StH5YNrY0mE
+
+# Ejemplos
+
 
 # Como utilizar la app
 Para convertir el audio a texto y resumir los resultados, sigue los siguientes pasos:
