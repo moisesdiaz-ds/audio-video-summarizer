@@ -6,6 +6,7 @@ Audio Summarizer es una aplicación que permite convertir audio a texto y resumi
 pip install -r requirements.txt
 ```
 
+## Si deseas correr whisper localmente
 ### pytorch-gpu
 Entra aqui para poder generar el comando que te permita instalar el pytorch correspondiente a tu maquina y ambiente: 
 https://pytorch.org/get-started/locally/
