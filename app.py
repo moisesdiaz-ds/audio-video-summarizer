@@ -11,14 +11,13 @@ from pydub import AudioSegment
 app = Flask(__name__)
 
 
-
 @app.route('/')
 def index():
     return render_template('index.html')
 
+
 @app.route('/upload', methods=['POST'])
 def upload():
-
 
     def divide_by_chunks(file_path):
         # set the path to the mp3 file
@@ -67,23 +66,21 @@ def upload():
         audio = video.audio
         audio.write_audiofile(audio_file)
 
+    # Summarize
+    def summarize_text(file_path, apikey):
 
-    ## Summarize
-    def summarize_text(file_path,apikey):
-
-        
-
-        file_path = file_path.replace('\\','/').replace('uploads','audio_transcription')+".txt"
+        file_path = file_path.replace(
+            '\\', '/').replace('uploads', 'audio_transcription')+".txt"
 
         # Define the text to be summarized
-        text = open(f"{file_path}", "r",encoding="utf-8").read()
+        text = open(f"{file_path}", "r", encoding="utf-8").read()
 
         limit = 12000
         loops = (len(text)//limit)+1
         message_list = []
         for n in range(loops):
-            n +=1
-            if (n!=loops) or (n==1):
+            n += 1
+            if (n != loops) or (n == 1):
                 t = text[(n-1)*limit:n*limit]
             else:
                 t = text[(n-1)*limit:]
@@ -98,17 +95,15 @@ def upload():
             {t}
             """
 
-
             # Generate a summary
             model_engine = "gpt-3.5-turbo"
             completions = openai.ChatCompletion.create(model=model_engine, messages=[
-                    {"role": "system", "content": "Tu eres un asistente muy servicial."},
-                    {"role": "user", "content":prompt}])
-            message =completions.choices[0].message.content
+                {"role": "system", "content": "Tu eres un asistente muy servicial."},
+                {"role": "user", "content": prompt}])
+            message = completions.choices[0].message.content
             message_list.append(message)
 
-
-        if len(message_list)==1:
+        if len(message_list) == 1:
             message_final = "".join(message_list)
 
         else:
@@ -180,9 +175,9 @@ def upload():
             # Generate a summary
             model_engine = "gpt-3.5-turbo"
             completions = openai.ChatCompletion.create(model=model_engine, messages=[
-                    {"role": "system", "content": "Tu eres un asistente muy servicial."},
-                    {"role": "user", "content":prompt}])
-            message_final =completions.choices[0].message.content
+                {"role": "system", "content": "Tu eres un asistente muy servicial."},
+                {"role": "user", "content": prompt}])
+            message_final = completions.choices[0].message.content
 
         filename_res = file_path.split('.')[0].split('\\')[-1].split('/')[-1]
         with open(f"results/{filename_res}.txt", 'w') as f:
@@ -190,14 +185,11 @@ def upload():
 
         print(message_final)
 
-            
         return message_final
 
-
-        
     # Apply API key
-    apikey = open("../api-key.txt", "r").read().replace("\n","")
-    
+    apikey = open("../api-key.txt", "r").read().replace("\n", "")
+
     openai.api_key = apikey
 
     file = request.files['file']
@@ -224,38 +216,38 @@ def upload():
     #command = f"whisper {file_path} --task transcribe --model medium --verbose False --device cuda --output_dir audio_transcription"
     #subprocess.run(command, shell=True)
 
-
     # VERSION WHISPER API
-    file_chunks_list = divide_by_chunks(file_path) # Esto es necesario porque la version de api tiene un limite
+    # Esto es necesario porque la version de api tiene un limite
+    file_chunks_list = divide_by_chunks(file_path)
     transcript_all = []
     for f in file_chunks_list:
 
-        audio_file= open(f, "rb")
+        audio_file = open(f, "rb")
         transcript = openai.Audio.transcribe("whisper-1", audio_file)
         transcript = transcript['text']
         transcript_all.append(transcript)
 
     transcript = "".join(transcript_all)
 
-    with open("audio_transcription/"+filename+".txt", 'w',encoding="utf-8") as f:
+    with open("audio_transcription/"+filename+".txt", 'w', encoding="utf-8") as f:
         f.write(transcript)
 
     try:
-        message_final = summarize_text(file_path,apikey)
+        message_final = summarize_text(file_path, apikey)
     except Exception as e:
         print('Se intentara de nuevo, hubo un problema de tipo ', e)
         sleep(3)
         try:
-            message_final = summarize_text(file_path,apikey)
+            message_final = summarize_text(file_path, apikey)
         except Exception as e:
             print('Otra vez, hubo un problema de tipo ', e)
-
 
     message_final = message_final.replace("\n", "<br>")
     return render_template('received.html', message_final=message_final)
 
+
 if __name__ == '__main__':
     app.config['SEND_FILE_MAX_AGE_DEFAULT'] = datetime.timedelta(minutes=30)
 
-    app.run(debug=True,host='0.0.0.0',port=5000)
-    #app.run()
+    app.run(debug=True, host='0.0.0.0', port=5000)
+    # app.run()
